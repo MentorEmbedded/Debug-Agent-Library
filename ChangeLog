@@ -1,0 +1,494 @@
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* agent-expr.c, agent-expr.h, agent.c: Update comment.
+	* backend.h, comm.c, command.c, defs.h, gdb.c: Likewise.
+	* i386-linux-backend.c, log.c, log.h, thread.c: Likewise.
+	* tracepoint.c, tracepoint.h, ust.c, x86-64-linux-backend.c: Likewise.
+	* Makefile.am: Change library name.
+	* configure.ac: Likewise.
+	* Makefile.in, configure: Regenerated.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (tracepoint_do_action): Print error when processing
+	actions for static tracepoints.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* backend.h (struct ust_register_map): New.
+	(struct static_tracepoint_backend): New.
+	(struct backend) [BUILD_UST] <static_tracepoint>: New.
+	* ust.c (ust_marker_to_static_tracepoint): New.
+	(supply_static_tracepoint_registers): New.
+	(agent_probe): Implemented.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (tracepoint_condition_is_true): Remove `static'.
+	(tracepoint_collect_data): Likewise.
+	* tracepoint.h: Update.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* ust.c (cmd_unprobe_marker_at): New.
+        (cmd_probe_marker_at): New.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* backend.h (struct fast_tracepoint_backend) <get_raw_reg>: Moved
+	to ...
+	(struct register_backend): ... here.
+	* agent_expr.c (agent_expr_eval): Update.
+	* gdb.c (gdb_raw_reg): Update.
+	* i386-linux-backend.c: Update.
+	* x86-64-linux-backend.c: Update.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* agent.c (gdb_agent_capability): New global.
+
+2012-01-30  Yao Qi  <yao@codesourcery.com>
+
+	* thread.h (gdb_stub_thread_info_t): Rename it to
+	agent_thread_info_t.
+	Update all uses.
+	* log.c: Rename gdb_xxx functions to agent_xxx
+	functions.
+	Update all uses.
+	* thread.c (gdb_stub_thread_info_find_from_pthread):
+	Rename it to agent_thread_info_find_from_pthread.
+	(gdb_stub_thread_info_add): Rename it to
+	agent_thread_info_add.
+	Remove unused includes.
+	* comm.c: Update comment.
+
+2012-01-09  Yao Qi  <yao@codesourcery.com>
+
+	* log.c: Rename gdb_xxx functions to agent_xxx
+	functions.
+	Update all uses.
+	* thread.c (gdb_stub_thread_info_find_from_pthread):
+	Rename it to agent_thread_info_find_from_pthread.
+	(gdb_stub_thread_info_add): Rename it to
+	agent_thread_info_add.
+
+2012-01-09  Yao Qi  <yao@codesourcery.com>
+
+	* thread.h (gdb_stub_thread_info_t): Rename it to
+	agent_thread_info_t.
+	Update all uses.
+
+2012-01-09  Yao Qi  <yao@codesourcery.com>
+
+	* Makefile.am, configure.ac: Clean up
+	* Makefile.in, configure: Regenerated.
+
+2012-01-09  Yao Qi  <yao@codesourcery.com>
+
+	* agent-expr.c, agent-expr.h, agent.c, agent.h,
+	backend.h, comm.c, command.c, configure.ac,
+	defs.h, gdb.c, i386-linux-backend.c, log.c, log.h,
+	thread.c, thread.h, tracepoint.c, tracepoint.h,
+	ust.c, x86-64-linux-backend.c: Add license header.
+	* Makefile.in, configure: Regenerated.
+
+2012-01-06  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (tracepoint_install): Install jump pad.
+
+2012-01-06  Yao Qi  <yao@codesourcery.com>
+
+	* agent-expr.c, agent-expr.h: Add comment.
+	* agent.c, backend.h, comm.c, command.c: Likewise.
+	* gdb.c, i386-linux-backend.c, log.c: Likewise.
+	* thread.c, tracepoint.c, ust.c: Likewise.
+	* x86-64-linux-backend.c: Likewise.
+
+2012-01-06  Yao Qi  <yao@codesourcery.com>
+
+	* itset.c, itset.h: Remove. 
+	* Makefile.am: Update.
+	* Makefile.in: Regenerated.
+
+2012-01-06  Yao Qi  <yao@codesourcery.com>
+
+	* agent-expr.c (agent_expr_parse): Removed.
+	(agent_expr_unparse, agent_expr_free): Removed.
+	* agent-expr.h: Remove declarations.
+	* backend.h (struct backend): Remove field `global_pbufsize'.
+	* i386-linux-backend.c: Update struct initialization.
+	* x86-64-linux-backend.c: Likewise.
+	* utils.c, utils.h: Remove.
+	* Makefile.am: Update.
+	* Makefile.in: Regenerated.
+
+2012-01-06  Yao Qi  <yao@codesourcery.com>
+
+	* gdil.c (GDB_message_names): Removed.
+	(gdb_message): Update.
+	(gdb_thread_equal): Removed.
+	(struct gdb_thread_t): Removed.
+	* thread.h (gdb_stub_thread_info_t): Remove fields `thread'
+	and `tid'.
+	* thread.c (gdb_stub_thread_info_add): Remove code to set
+	these fields.
+
+2012-01-05  Yao Qi  <yao@codesourcery.com>
+
+	* gdil-types.h: Deleted.  Move relavant bits to ...
+	* gdil.h: ... here.
+	* gdil.c, gdil.h, tracepoinit.c, tracepoint.h: Clean up.
+
+2012-01-05  Yao Qi  <yao@codesourcery.com>
+
+	* agent-config.c, agent-config.h: Deleted.  Move relevant
+	bits to agent.c.
+	* Makefile.am: Update.
+	* Makefile.in: Regenerated.
+	* agent.c: Moved from agent-config.c.
+	* shadow-memory.h: Deleted.
+
+2012-01-05  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.h (tracepoint_t): Adjust field layout.
+	* tracepoint.c (trace_command): Adjust the length to copy
+	from buffer.
+	* i386-linux-backend.c: Clean up.
+	* tracepoint.c: Likewise.
+	* tracepoint.h: Likewise.
+
+2012-01-05  Yao Qi  <yao@codesourcery.com>
+
+	* breakpoint.c: Deleted.
+	* Makefile.am: Update.
+	* Makefile.in: Regenerated.
+	* breakpoint.h: Deleted.
+	* agent.c (install_fast_tracepoint_jump): Remove.
+	(remove_fast_tracepoint_jump): Remove.
+	Update callers.
+	* tracepoint.h: Don't include breakpoint.h.
+	(struct tracepoint_t): Adjust fields layout and remove
+	field `base'.
+	* tracepoint.c: Update.
+
+2012-01-04  Yao Qi  <yao@codesourcery.com>
+
+	* breakpoint.c: Deleted.
+	* Makefile.am: Update.
+	* Makefile.in: Regenerated.
+	* agent.c (install_fast_tracepoint_jump): Remove.
+	(remove_fast_tracepoint_jump): Remove.
+	Update callers.
+	* brekapoint.h (struct bkpt): Remove.
+	(struct shadow_block): Remove.
+
+2012-01-04  Yao Qi  <yao@codesourcery.com>
+
+	* out-proc-debug.c: Delete.
+	* gdb.c: New.  Renamed from out-proc-debug.c.
+	* Makefile.am: Update.
+	* Makefile.in: Regenerated.
+
+2012-01-04  Yao Qi  <yao@codesourcery.com>
+
+	* agent.c: Remove include files.
+
+2012-01-04  Yao Qi  <yao@codesourcery.com>
+
+	* agent.c (gdb_stub_read_memory): Rename to
+	`agent_read_memory'.
+	(gdb_stub_write_memory): Rename to
+	`agent_write_memory'.
+	Update all callers.
+
+2011-12-31  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.h (tracerun_t): Remove.
+	Update all references.
+
+2011-12-31  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (traceframe_add_block): Remove parameter
+	tracerun_t.
+	Update callers.
+
+2011-12-31  Yao Qi  <yao@codesourcery.com>
+
+	* breakpoint.h (gdb_fast_tracepoint): Move it to ...
+	* gdil.h: ...here.
+
+2011-12-31  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.h (struct tracepoint_t): Remove unused
+	fields.
+	Update comments.
+	* out-proc-debug.c: Likewise.
+
+2011-12-31  Yao Qi  <yao@codesourcery.com>
+
+	* i386-linux-backend.c: Update comments.
+	* x86-64-linux-backend.c: Likewise.
+
+2011-12-31  Yao Qi  <yao@codesourcery.com>
+
+	* agent-expr.c (append_insns): Add comment.
+	* agent-expr.h: Declare append_insns.
+	* backend.h (struct fast_tracepoint_backend): Remove
+	field `min_fast_tracepoint_insn_len'.
+	* i386-linux-backend.c (get_pc_reg_num): Remove.
+	(is_absolute_jmp, is_absolute_call): Likewise.
+	(is_call, is_ret, append_insns): Likewise.
+	(get_min_fast_tracepoint_insn_len): Likewise.
+	* x86-64-linux-backend.c (is_absolute_jmp): Remove.
+	(is_absolute_call, is_call, is_ret): Likewise.
+	(get_min_fast_tracepoint_insn_len): Likewise.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	*  x86_64-linux-backend.c (jump_size): Change it to macro JUMP_SIZE.
+	Update all references.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* backend.h (struct signal_context_backend): Deleted.
+	(struct register_backend): New.
+	(struct backend): Remove fields `max_insn_length',
+	`core_of_thread', and `target_description'.
+	* i386-linux-backend.c (displaced_step_copy_insn):
+	Deleted.
+	Add prefix `i386_' to `emit_' functions.
+	* x86_64-linux-backend.c (displaced_step_copy_insn):
+	Deleted.
+	Add prefix `x86_64_' to `emit_' functions.
+	* agent-expr.h: Remove function declarations.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* backend.c: Deleted.
+	* Makefile.am: Remove `backend.c'.
+	* Makefile.in: Regenerated.
+        * agent.c: New global `agent_backend'.
+	* backend.h: Remove unused bits.
+        * i386-linux-backend.c (i386_get_signal_context_regs): Removed.
+        (i386_put_signal_context_regs): Likewise.
+        (get_pc_reg_num): Likewise.
+	* x86-64-linux-backend.c (x86_64_get_signal_context_regs): Removed.
+        (x86_64_put_signal_context_regs): Likewise.
+        (get_pc_reg_num): Likewise.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* thread.h (struct gdb_stub_thread_info_t): Remove
+	fields.
+	* thread.c (thread_list_mutex): Remove.
+	(release_scratch_space): Removed.
+	(unlink_thread_stop_event): Likewise.
+	(gdb_stub_thread_info_add): Don't lock and unlock
+	`thread_list_mutex'.
+	(gdb_stub_thread_info_find): Removed.
+	(gdb_stub_thread_info_remove): Likewise.
+	(struct scratch_block): Likewise.
+	(release_scratch_block): Likewise.
+	(get_scratch_space): Likewise.
+	(release_scratch_space): Likewise.
+	(print_thread_state): Likewise.
+	* tracepoint.c (error_record_mutex): Remove unused
+	mutext.
+	* agent-expre.c (gdb_stub_threads): Remove.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (tracepoint_do_action): Save pc in regblock.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* agent.c (gdb_stub_get_pagesize): Rename to
+	`agent_get_pagesize'.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* out-proc-debug.c (mark_jump_pad_block): Remove.
+	(sweep_jump_pad_blocks): Likewise.
+	(tracepoint_condition_is_true): Change type of parameters.
+	* agent.c (agent_rmpoint): Rename it to ...
+	(remove_fast_tracepoint_jump): ... this.
+	* agent.h: Update declaration.
+	* breakpoint.c: Update comments.
+	* tracepoint.c (use_trace_buffer_mutex): Removed.
+	(trace_buffer_mutex): Removed.
+	(tracepoint_collect_data): Don't lock and unlock
+	mutex.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (need_trampoline_buffer_gc): Deleted.
+	(agent_trace_buffer_free_space, tracepoint_add):
+	Deleted.
+	(tracepoint_remove, first_tsv, next_tsv): Likewise.
+	(trace_state_variable_create): Likewise.
+	(traceframe_find, traceframe_get_pc): Likewise.
+	(traceframe_get_address): Likewise.
+	(gc_tracerun, gc_old_traceruns): Likewise.
+	(set_free_trampoline_blocks): Likewise.
+	(initialize_free_trampoline_blocks): Likewise.
+	(compare_trampoline_blocks): Likewise.
+	(gc_trampoline_buffer, gc_trampoline_buffer): Likewise.
+	(while_stepping_state_add): Likewise.
+	(while_stepping_state_release): Likewise.
+	(while_stepping_state_release_list): Likewise.
+	(tracepoint_finished_step, tracepoint_was_hit): Likewise.
+	(slow_tracepoint_from_pc): Likewise.
+	(gdb_tracepoint_number): Likewise.
+	(tracepoint_orig_size): Likewise.
+	(tracepoint_collect_data_at_step): Likewise.
+	* tracepoint.h: Remove these declarations.
+
+2011-12-30  Yao Qi  <yao@codesourcery.com>
+
+	* agent.c (axe_agent_cooked_addpoint_1): Deleted.
+	Move relevant bits to ...
+	(install_fast_tracepoint_jump): ... here.
+
+2011-12-29  Yao Qi  <yao@codesourcery.com>
+
+	* agent.c (gdb_stub_write_mem): Remove first parameter.
+	(gdb_stub_read_mem): Likewise.
+	Update all callers.
+
+2011-12-29  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c: Fix compiler's warning.
+
+2011-12-28  Yao Qi  <yao@codesourcery.com>
+
+	* configure, Makefile.in: Regenerate.
+
+2011-12-27  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (trace_command): Initialize variable.
+
+2011-12-27  Yao Qi  <yao@codesourcery.com>
+
+	* gdil.h, gdil.c: Remove unused bits.
+
+2011-12-22  Yao Qi  <yao@codesourcery.com>
+
+	* i386-linux-backend.c (COLLECT_SEG_REGS): New macro.
+	(i386_install_fast_tracepoint_jump_pad): Save and restore
+	segment registers.
+
+2011-12-22  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (tracepoint_install): New.
+	(trace_command): New.
+	(initialize_tracepoint): Turn verbose on.
+	* command.c: Add one element in array `commands'.
+	* i386-linux-backend.c (install_fast_tracepoint_jump_pad):
+	Rename to i386_install_fast_tracepoint_jump_pad.
+	* x86-64-linux-backend.c (install_fast_tracepoint_jump_pad):
+	Rename to x86_64_install_fast_tracepoint_jump_pad.
+
+2011-12-22  Yao Qi  <yao@codesourcery.com>
+
+	* ust.c (response_ust_marker): Reply with marker location.
+
+2011-12-22  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.h (tracepoint_t): Adjust fields layout.
+
+2011-12-22  Yao Qi  <yao@codesourcery.com>
+
+	* command.c, ust.c: Remove printf.
+
+2011-12-16  Yao Qi  <yao@codesourcery.com>
+
+	* agent-signal.h, gdil-stub.c, gdil-trace.c, in-proc-debug.c
+	event-proc.c, gdil-stub.h, gdil-int.h, signal.c,
+	x86-linux-backend.c, gdil-utils.h: Removed.
+	* agent.c: Cleanup.
+	* agent.h: Cleanup.
+	* command.c, command.h, comm.c: New.
+	* Makefile.am: Add new files.
+	* agent.c agent.h tracepoint.h
+	* ust.c (init_named_socket): Move to comm.c.
+	(gdb_ust_socket_init): Move to comm.c.
+	(gdb_ust_thread): Move to comm.c.
+	(initialize_ust): Move part of it to comm.c.
+	* tracepoint.h (GDB_AGENT_SYM): Move to ...
+	* agent.h: ... here.
+	* agent.c (initialize_agent): Call initialize_helper_thread.
+	* breakpoint.c: Cleanup.
+
+2011-12-16  Yao Qi  <yao@codesourcery.com>
+
+	* breakpoint.h (base_point_t): Remove fields `compile_condition'
+	`condition_is_true' and `itset'.
+	* gdil-trace.c (cmd_qtstart): Call tracepoint_compile_condition.
+	* tracepoint.c (tracepoint_was_hit): Call tracepoint_condition_is_true.
+	* tracepoint.h: Declare tracepoint_compile_condition.
+
+2011-12-16  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (get_trace_state_variable_value) Rename to
+	trace_state_variable_get_value.
+	(create_trace_state_variable): Rename to
+	trace_state_variable_create.
+	(collect_data_at_step): Rename to
+	tracepoint_collect_data_at_step.
+	update callers.
+	* gdil-stub.c: Don't inlucde gdil-utils.h.
+
+2011-12-16  Yao Qi  <yao@codesourcery.com>
+
+	* Makefile.am: Build ust.c for both libca.so and libinproc.so.
+	* configure, Makefile.in: Regenerated.
+	* agent.c: Declare initialize_ust.
+	* ust.c (gdb_ust_thread): Handle sample command "break".
+	(initialize_ust): Start helper thread first, and then resolve
+	symbols.
+
+2011-12-14  Yao Qi  <yao@codesourcery.com>
+
+	* gdil-int.h, gdil-driver.c, gdil-utils.c: Copied from gdil.
+	* gdil.c gdil-utils.h gdil.h gdil-types.h: Likewise.
+	* Makefile.am (libinproc_la_SOURCES): Add gdil.c gdil-driver.c
+	and gdil-utils.c.
+	(libinproc_la_LIBADD): Remove -lstdc++ -lgdil -lexpat.
+	* configure.ac: Don't check expat and gdil.
+	* Makefile.in, configure: Regenerated.
+
+2011-12-14  Yao Qi  <yao@codesourcery.com>
+
+	* configure.ac: Check headers of ust.
+	* Makefile.am: Remove one unused line.
+	* ust.c: Update for ust 0.11 release.
+	* configure, Makefile.in: Regenerated.
+
+2011-12-13  Yao Qi  <yao@codesourcery.com>
+
+	* i386-linux-backend.c (GBUFSIZE): Change it to 312.
+
+2011-12-13  Yao Qi  <yao@codesourcery.com>
+
+	* i386-linux-backend.c (i386_get_raw_reg): Adjust for saved
+	segment register.
+
+2011-12-07  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.c (gdb_collect): Loop over TPOINT.
+
+2011-12-07  Yao Qi  <yao@codesourcery.com>
+
+	* tracepoint.h (struct tracepoint_t): Align fields with gdbserver's
+	counterparts.
+	(struct tracepoint_action_t): Likewise.
+
+2011-12-07  Yao Qi  <yao@codesourcery.com>
+
+	* ust.c: Move global variables to ...
+	* agent.c: ... here.
+
+2011-12-06  Yao Qi  <yao@codesourcery.com>
+
+	Initial import.
+
