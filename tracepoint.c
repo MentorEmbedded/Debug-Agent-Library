@@ -672,10 +672,7 @@ tracepoint_do_action (agent_thread_info_t *tinfo,
       }
     case 'R':
       {
-	struct collect_registers_action *raction;
 	unsigned char *regspace;
-
-	raction = (struct collect_registers_action *) taction;
 
 	gdb_verbose ("Want to collect registers");
 

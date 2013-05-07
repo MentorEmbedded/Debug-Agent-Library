@@ -39,14 +39,14 @@ struct command
 int
 break_command (char *cmd_buf)
 {
+/*
   int number;
   uint64_t address;
 
   number = *((int *) &cmd_buf[8]);
   address = *((uint64_t *) &cmd_buf[12]);
-
+*/
   return 0;
-
 }
 
 int trace_command_protocol (char *cmd_buf);
