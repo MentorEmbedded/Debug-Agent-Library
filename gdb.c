@@ -64,7 +64,7 @@ struct trace_buffer_control
 
   unsigned char *end_free;
 
-  /* unsigned char *wrap; */
+  unsigned char *wrap;
 };
 
 
