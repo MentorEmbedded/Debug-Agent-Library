@@ -254,16 +254,24 @@ void
 initialize_gdb_config (void)
 {
   int pagesize = agent_get_pagesize ();
+  uintptr_t addr;
 
-  GDB_AGENT_SYM(gdb_jump_pad_buffer) = memalign (pagesize, pagesize * 20);
+  for (addr = pagesize; addr != 0; addr += pagesize)
+    {
+      GDB_AGENT_SYM(gdb_jump_pad_buffer) = mmap ((void *) addr,
+						 pagesize * 20,
+						 PROT_READ | PROT_WRITE | PROT_EXEC,
+						 MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED,
+						 -1, 0);
+      if (GDB_AGENT_SYM(gdb_jump_pad_buffer) != MAP_FAILED)
+	break;
+    }
+
+  if (addr == 0)
+    gdb_inform ("Unable to set up jump pad buffer!");
+
   GDB_AGENT_SYM(gdb_jump_pad_buffer_end)
     = GDB_AGENT_SYM(gdb_jump_pad_buffer) + pagesize * 20;
-
-  if (mprotect (GDB_AGENT_SYM(gdb_jump_pad_buffer), pagesize * 20,
-		PROT_READ | PROT_WRITE | PROT_EXEC) != 0)
-    {
-      gdb_inform ("Unable to set up jump pad buffer!");
-    }
 
   GDB_AGENT_SYM(gdb_trampoline_buffer) = 0;
   GDB_AGENT_SYM(gdb_trampoline_buffer_end) = 0;
